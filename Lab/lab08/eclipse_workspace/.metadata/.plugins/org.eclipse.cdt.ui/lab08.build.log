@@ -1,0 +1,53 @@
+
+**** Build of configuration Nios II for project lab08 ****
+
+make all 
+Info: Building ../lab08_bsp/
+make --no-print-directory -C ../lab08_bsp/
+[BSP build complete]
+Info: Compiling gps_ucosii.c to obj/gps_ucosii.o
+nios2-elf-gcc -xc -MP -MMD -c -I../lab08_bsp//HAL/inc -I../lab08_bsp/ -I../lab08_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mno-hw-div -mhw-mul -mno-hw-mulx  -o obj/gps_ucosii.o gps_ucosii.c
+In file included from gps_ucosii.c:33:
+alt_ucosii_simple_error_check.c:9:22: error: includes.h: No such file or directory
+alt_ucosii_simple_error_check.c:10:43: error: alt_ucosii_simple_error_check.h: No such file or directory
+In file included from gps_ucosii.c:33:
+alt_ucosii_simple_error_check.c:19: error: expected ')' before 'return_code'
+alt_ucosii_simple_error_check.c:38: error: expected ')' before 'return_code'
+gps_ucosii.c:40: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'task1_stk'
+gps_ucosii.c:41: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'task2_stk'
+gps_ucosii.c:42: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'task3_stk'
+gps_ucosii.c:43: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'task4_stk'
+gps_ucosii.c:44: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'task5_stk'
+gps_ucosii.c:56: error: expected '=', ',', ';', 'asm' or '__attribute__' before '*' token
+gps_ucosii.c:60: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'return_code'
+gps_ucosii.c: In function 'task1':
+gps_ucosii.c:102: warning: implicit declaration of function 'OSSemPend'
+gps_ucosii.c:102: error: 'data_packet_sem' undeclared (first use in this function)
+gps_ucosii.c:102: error: (Each undeclared identifier is reported only once
+gps_ucosii.c:102: error: for each function it appears in.)
+gps_ucosii.c:102: error: 'return_code' undeclared (first use in this function)
+gps_ucosii.c:103: warning: implicit declaration of function 'alt_ucosii_check_return_code'
+gps_ucosii.c:112: warning: implicit declaration of function 'OSSemPost'
+gps_ucosii.c:113: warning: implicit declaration of function 'OSTimeDlyHMSM'
+gps_ucosii.c: In function 'task2':
+gps_ucosii.c:122: error: 'data_packet_sem' undeclared (first use in this function)
+gps_ucosii.c:122: error: 'return_code' undeclared (first use in this function)
+gps_ucosii.c: In function 'task3':
+gps_ucosii.c:177: error: 'return_code' undeclared (first use in this function)
+gps_ucosii.c:177: error: 'OS_NO_ERR' undeclared (first use in this function)
+gps_ucosii.c: In function 'task4':
+gps_ucosii.c:199: error: 'return_code' undeclared (first use in this function)
+gps_ucosii.c:199: error: 'OS_NO_ERR' undeclared (first use in this function)
+gps_ucosii.c: In function 'main':
+gps_ucosii.c:232: error: 'return_code' undeclared (first use in this function)
+gps_ucosii.c:232: error: 'OS_NO_ERR' undeclared (first use in this function)
+gps_ucosii.c:234: error: 'data_packet_sem' undeclared (first use in this function)
+gps_ucosii.c:234: warning: implicit declaration of function 'OSSemCreate'
+gps_ucosii.c:256: warning: implicit declaration of function 'OSTaskCreateExt'
+gps_ucosii.c:258: error: 'task1_stk' undeclared (first use in this function)
+gps_ucosii.c:270: error: 'task2_stk' undeclared (first use in this function)
+gps_ucosii.c:281: error: 'task3_stk' undeclared (first use in this function)
+gps_ucosii.c:293: error: 'task4_stk' undeclared (first use in this function)
+gps_ucosii.c:305: error: 'task5_stk' undeclared (first use in this function)
+gps_ucosii.c:315: warning: implicit declaration of function 'OSStart'
+make: *** [obj/gps_ucosii.o] Error 1

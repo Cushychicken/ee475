@@ -1,0 +1,29 @@
+
+**** Build of configuration Nios II for project lab08_UART_buffer ****
+
+make all 
+Info: Building ../lab08_UART_buffer_bsp/
+make --no-print-directory -C ../lab08_UART_buffer_bsp/
+[BSP build complete]
+Info: Compiling gps_ucosii.c to obj/gps_ucosii.o
+nios2-elf-gcc -xc -MP -MMD -c -I../lab08_UART_buffer_bsp//UCOSII/inc -I../lab08_UART_buffer_bsp//HAL/inc -I../lab08_UART_buffer_bsp/ -I../lab08_UART_buffer_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -D__ucosii__    -O0 -g -Wall   -EL -mno-hw-div -mhw-mul -mno-hw-mulx  -o obj/gps_ucosii.o gps_ucosii.c
+In file included from gps_ucosii.c:35:
+gpsparse_lab08.h:114:35: warning: "/*" within comment
+gpsparse_lab08.h:118:37: warning: "/*" within comment
+gpsparse_lab08.h:119:33: warning: "/*" within comment
+gpsparse_lab08.h:120:23: warning: "/*" within comment
+gpsparse_lab08.h:123:42: warning: "/*" within comment
+gpsparse_lab08.h:124:28: warning: "/*" within comment
+gpsparse_lab08.h:125:29: warning: "/*" within comment
+gps_ucosii.c: In function 'init_UART_ISR':
+gps_ucosii.c:94: warning: implicit declaration of function 'alt_irq_register'
+gps_ucosii.c: At top level:
+lcdwrite.h:25: warning: 'WriteLCD' defined but not used
+Info: Linking lab08_UART_buffer.elf
+nios2-elf-g++  -T'../lab08_UART_buffer_bsp//linker.x' -msys-crt0='../lab08_UART_buffer_bsp//obj/HAL/src/crt0.o' -msys-lib=ucosii_bsp -L../lab08_UART_buffer_bsp/   -Wl,-Map=lab08_UART_buffer.map   -O0 -g -Wall   -EL -mno-hw-div -mhw-mul -mno-hw-mulx  -o lab08_UART_buffer.elf obj/gps_ucosii.o -lm 
+nios2-elf-insert lab08_UART_buffer.elf --thread_model ucosii --cpu_name cpu_nios --qsys true --simulation_enabled false --stderr_dev jtag_uart_0 --stdin_dev uart_RS232 --stdout_dev jtag_uart_0 --sopc_system_name nios_qsys --quartus_project_dir "C:/NRCRee475/lab08/DE2_System/nios_qsys"
+Info: (lab08_UART_buffer.elf) 144 KBytes program size (code + initialized data).
+Info:                         8040 KBytes free for stack + heap.
+Info: Creating lab08_UART_buffer.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source lab08_UART_buffer.elf >lab08_UART_buffer.objdump
+[lab08_UART_buffer build complete]

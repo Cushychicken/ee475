@@ -1,0 +1,10 @@
+/*
+ * lcd_write.c
+ *
+ *  Created on: Sep 23, 2011
+ *      Author: nash.reilly
+ */
+
+#include <stdio.h>
+#include <lcdwrite.h>
+

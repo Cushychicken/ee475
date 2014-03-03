@@ -1,0 +1,19 @@
+
+**** Build of configuration Nios II for project ee475final_5 ****
+
+make all 
+Info: Building ../ee475final_5_bsp/
+make --no-print-directory -C ../ee475final_5_bsp/
+[BSP build complete]
+Info: Compiling test_image.c to obj/test_image.o
+nios2-elf-gcc -xc -MP -MMD -c -I../ee475final_5_bsp//HAL/inc -I../ee475final_5_bsp/ -I../ee475final_5_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -EL -mno-hw-div -mhw-mul -mno-hw-mulx  -o obj/test_image.o test_image.c
+test_image.c: In function 'main':
+test_image.c:85: warning: implicit declaration of function 'usleep'
+Info: Linking ee475final_5.elf
+nios2-elf-g++  -T'../ee475final_5_bsp//linker.x' -msys-crt0='../ee475final_5_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../ee475final_5_bsp/   -Wl,-Map=ee475final_5.map   -O0 -g -Wall   -EL -mno-hw-div -mhw-mul -mno-hw-mulx  -o ee475final_5.elf obj/test_image.o -lm 
+nios2-elf-insert ee475final_5.elf --thread_model hal --cpu_name cpu_nios --qsys true --simulation_enabled false --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name nios_qsys --quartus_project_dir "C:/NRCRee475/final_project/DE2_System/nios_qsys"
+Info: (ee475final_5.elf) 67 KBytes program size (code + initialized data).
+Info:                    8117 KBytes free for stack + heap.
+Info: Creating ee475final_5.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source ee475final_5.elf >ee475final_5.objdump
+[ee475final_5 build complete]

@@ -1,0 +1,57 @@
+----------------------------------------------------------------------------------
+--
+-- Company:          Montana State University
+-- Author/Engineer:  Nash Reilly
+--
+-- Create Date:      09/19/2011
+-- Design Name:      sr_design
+-- Module Name:      fifo_structure 
+-- Target Devices:   Altera DE2 Evaluation Board
+----------------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity calibrate is 
+	port(
+		data		: in std_logic_vector(13 downto 0);		--Raw digital value in
+		x_coord 	: in std_logic_vector(8 downto 0);		--X coordinate in
+		y_coord 	: in std_logic_vector(7 downto 0);		--Y coordinate in
+		fr_li		: in std_logic;								--Frame/sync line
+		par_out	: out std_logic_vector(13 downto 0);	--Parallel output
+		p_ready	: out std_logic								--Parallel output ready flag
+		cnt_reset: out std_logic								--Pixel counter reset
+		);
+end entity calibrate;
+
+architecture arch_lvds_sipo of lvds_sipo is
+
+signal temp : std_logic_vector(13 downto 0);
+signal count: std_logic_vector(3 downto 0);
+
+begin
+
+par_out <= temp;
+
+SIPO : PROCESS (data_clk, reset)
+	begin
+		
+		if (reset = '0') then 
+			temp <= "00000000000000";
+			p_ready <= '0';
+		elsif (data_clk'event and data_clk = '1') then
+			temp <= temp(12 downto 0) & ser_in;
+		end if;
+		
+		if (count = "1101") then
+			p_ready <= '1';
+			count <= count + 3;
+		else
+			count <= count + 1;
+		end if;
+		
+	end process;
+	
+end arch_lvds_sipo;

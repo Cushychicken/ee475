@@ -1,0 +1,8 @@
+
+**** Build of configuration Nios II for project lab08_buttons ****
+
+make all 
+Info: Building ../lab08_buttons_bsp/
+make --no-print-directory -C ../lab08_buttons_bsp/
+[BSP build complete]
+[lab08_buttons build complete]

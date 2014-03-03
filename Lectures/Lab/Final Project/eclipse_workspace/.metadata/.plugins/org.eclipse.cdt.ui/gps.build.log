@@ -1,0 +1,8 @@
+
+**** Build of configuration Nios II for project gps ****
+
+make all 
+Info: Building ../gps_bsp/
+make --no-print-directory -C ../gps_bsp/
+[BSP build complete]
+[gps build complete]

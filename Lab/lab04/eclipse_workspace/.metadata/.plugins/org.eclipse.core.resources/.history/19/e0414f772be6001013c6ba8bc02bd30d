@@ -1,0 +1,55 @@
+/*
+ * lcd_write.c
+ *
+ *  Created on: Sep 23, 2011
+ *      Author: nash.reilly
+ */
+
+#include <stdio.h>
+#include <swing.h>
+#include "C:\NRCREE475\lab04\DE2_System\nios_qsys\software\lcd\lcdwrite.h"
+
+#define Switches (volatile int *) 0x01001010
+#define LEDs 	 (int *) 0x01001000
+
+int main (void){
+
+	int test = 0;
+	int prev = 0;
+	int VERBOSE = 0;
+	char str[] = "Switch program!\n";
+	char sw1[] = "SW1 is active.\n";
+	char sw2[] = "SW2 is active.\n";
+	char sw3[] = "SW3 is active.\n";
+	char sw4[] = "SW4 is active.\n";
+	char prev1[] = "SW1 used last.\n";
+	char prev2[] = "SW2 used last.\n";
+	char prev3[] = "SW3 used last.\n";
+	char prev4[] = "SW4 used last.\n";
+
+	WriteLCD(str);
+
+	while(1){
+		test = *Switches;
+
+		if(VERBOSE = 1){
+			printf("Current value of test: %d\n", test);
+		};
+
+		switch(test){
+			case '1':
+				WriteLCD(sw1); break;
+			case '2':
+				WriteLCD(sw2); break;
+			case '4':
+				WriteLCD(sw3); break;
+			case '8':
+				WriteLCD(sw4); break;
+		}
+		prev = test;
+
+	};
+
+	return(1);
+
+}

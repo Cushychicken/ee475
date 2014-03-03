@@ -1,0 +1,67 @@
+/*
+ * gpsparse.h
+ *
+ *  Created on: Oct 4, 2011
+ *      Author: nash.reilly
+ */
+
+#ifndef GPSPARSE_H_
+#define GPSPARSE_H_
+
+int checksum(char test, char cs){
+  int j;
+  int k;
+  int l;
+  char pkt[83];
+
+  j = 0;																		/*Sets checksum flag to 0                             */
+  k = 0;
+
+  if(test == 'G'){
+	  cs  	= test;
+	  pkt[j] 	= test;
+	  j++;
+	  test	= getchar();
+	  if(test == 'P'){
+		  cs     = checksum(test,cs);
+		  pkt[j] = test;
+		  j++;
+		  test = getchar();
+		  if(test == 'G'){
+			  cs   	= checksum(test,cs);
+			  pkt[j] 	= test;
+			  j++;
+			  test 	= getchar();
+			  if(test == 'G'){
+				  cs   	= checksum(test,cs);
+				  pkt[j] 	= test;
+				  j++;
+				  test 	= getchar();
+				  if(test == 'A'){							/*If it makes it this far, GPGGA has been found       */
+					  cs   	= checksum(test,cs);			/*Checksum ready for data after GPGGA                 */
+					  pkt[j] 	= test;
+					  j++;
+					  test 	= getchar();
+					  while(test != '$'){						/*Loop reads in new character from serial, checks for */
+						  pkt[j] = test;
+						  j++;
+						  if (test == '*'){					/*checksum separator, updates checksum if checksum    */
+							  k = 1;							/*separator not present, and prints checksum in hex   */
+						  };									/*once checksum separator comes up in the flow        */
+						  if (k != 1){
+							  cs = checksum(test,cs);
+						  };
+						  test = getchar();
+					  };
+					  for(j=0; (pkt[j]!= '\n'); j++){
+						  printf("%c", pkt[j]);
+					  };
+					  printf("\n");
+				  };
+			  };
+		  };
+	  };
+  };
+
+};
+#endif /* GPSPARSE_H_ */

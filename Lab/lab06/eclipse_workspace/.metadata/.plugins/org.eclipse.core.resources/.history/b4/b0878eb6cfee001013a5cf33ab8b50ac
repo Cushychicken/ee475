@@ -1,0 +1,51 @@
+/*
+ * gpsparse.h
+ *
+ *  Created on: Oct 4, 2011
+ *      Author: nash.reilly
+ */
+
+#ifndef GPSPARSE_H_
+#define GPSPARSE_H_
+
+checksum(char test, char cs){
+  int j;
+
+  if(test == 'G'){
+			cs  = test;
+			test=getchar();
+				if(test == 'P'){
+					cs   = checksum(test,cs);
+				    test = getchar();
+				    	if(test == 'G'){
+				    		cs   = checksum(test,cs);
+				    		test = getchar();
+				    			if(test == 'G'){
+				    				cs   = checksum(test,cs);
+				    				test = getchar();
+				    					if(test == 'A'){							/*If it makes it this far, GPGGA has been found       */
+				    						cs   = checksum(test,cs);				/*Checksum ready for data after GPGGA                 */
+				    						test = getchar();
+				    						printf("$GPGGA");
+				    						while(test != '$'){						/*Loop reads in new character from serial, checks for */
+				    							if (test == '*'){					/*checksum separator, updates checksum if checksum    */
+				    								j = 1;							/*separator not present, and prints checksum in hex   */
+				    							}									/*once checksum separator comes up in the flow        */
+				    							if (j != 1){
+				    								cs = checksum(test,cs);
+				    							}
+				    							printf("%c", test);
+				    							WriteLCD(test);
+				    							test = getchar();
+				    						};
+				    						check = (int)cs;
+				    						printf("Checksum (from char)= 0x%x\n", cs);		/*Prints checksum result in Hexadecimal               */
+				    						printf("Checksum (from int) = 0x%x\n", check);
+				    					};
+				    			};
+				    	};
+				};
+		};
+
+};
+#endif /* GPSPARSE_H_ */

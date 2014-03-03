@@ -1,0 +1,48 @@
+/*
+ * lcdwrite.c
+ *
+ *  Created on: Sep 28, 2011
+ *      Author: nash.reilly
+ */
+
+#include <stdio.h>
+#include <string.h>
+#include "C:\NRCREE475\lab04\DE2_System\nios_qsys\software\lcd\lcdwrite.h"
+
+#define Switches (volatile int *) 0x01001010
+#define LEDs 	 (int *) 0x01001000\
+
+int main (void){
+
+	int test 		= 0;
+	int prev 		= 0;
+	int VERBOSE 	= 0;
+	int j,k;
+	int test_array  = {1,2,4,8};
+	char str1[] = "Initialize.";
+	char str2[] = "Initialize.";
+
+	sprintf(str, "Switch program!");
+	WriteLCD(str);
+
+	while(1){
+		test = *Switches;
+
+		if(VERBOSE == 1){
+			printf("Current value of test: %d\n", test);
+		};
+
+		if (prev != test){
+			for(j=0; j<4; j++){
+				if(test == test_array[j]){
+					sprintf(str1, "SW%d is active.", j);
+				};
+			};
+		};
+		prev = test;
+
+	};
+
+	return(1);
+
+}

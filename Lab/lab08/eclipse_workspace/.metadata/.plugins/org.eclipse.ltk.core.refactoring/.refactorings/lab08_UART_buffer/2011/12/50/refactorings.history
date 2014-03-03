@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;lab08_UART_buffer/gpsparse.h&apos; to &apos;gpsparse_lab08.h&apos;" description="Rename resource &apos;gpsparse.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="gpsparse.h" name="gpsparse_lab08.h" stamp="1323301021506" updateReferences="true"/>
+</session>

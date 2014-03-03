@@ -1,0 +1,8 @@
+
+**** Build of configuration Nios II for project ee475final_2 ****
+
+make all 
+Info: Building ../ee475final_2_bsp/
+make --no-print-directory -C ../ee475final_2_bsp/
+[BSP build complete]
+[ee475final_2 build complete]

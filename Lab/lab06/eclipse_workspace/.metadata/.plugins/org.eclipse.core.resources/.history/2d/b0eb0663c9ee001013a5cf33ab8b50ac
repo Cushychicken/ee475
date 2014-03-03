@@ -1,0 +1,79 @@
+/*
+ * gps.c
+ *
+ *  Created on: Oct 3, 2011
+ *      Author: nash.reilly
+ */
+
+#include <stdio.h>
+#include <string.h>
+#include "C:\NRCREE475\lab04\DE2_System\nios_qsys\software\lcdwrite\lcdwrite.h"
+
+char checksum(char test, char cs);
+
+typedef struct packet{
+	char* time;
+	char* latitude[11];
+	char* north[1];
+	char* longitude[11];
+	char* east[1];
+	char* quality[1];
+	char* satcount[2];
+	char* hdop[5];
+	char* height[5];
+	char* unit[1];
+	char* dgpsage[1];
+	char* dgpsref[4];
+};
+
+int main()
+{
+	char test;
+	char cs;
+	int j;
+
+	while(1){
+		test=getchar();																/*Gets first character from serial stream             */
+		j = 0;																		/*Sets checksum flag to 0                             */
+		if(test == 'G'){
+			cs  = test;
+			test=getchar();
+				if(test == 'P'){
+					cs   = checksum(test,cs);
+				    test = getchar();
+				    	if(test == 'G'){
+				    		cs   = checksum(test,cs);
+				    		test = getchar();
+				    			if(test == 'G'){
+				    				cs   = checksum(test,cs);
+				    				test = getchar();
+				    					if(test == 'A'){							/*If it makes it this far, GPGGA has been found       */
+				    						cs   = checksum(test,cs);				/*Checksum ready for data after GPGGA                 */
+				    						test = getchar();
+				    						printf("$GPGGA");
+				    						while(test != '$'){						/*Loop reads in new character from serial, checks for */
+				    							if (test == '*'){					/*checksum separator, updates checksum if checksum    */
+				    								j = 1;							/*separator not present, and prints checksum in hex   */
+				    							}									/*once checksum separator comes up in the flow        */
+				    							if (j != 1){
+				    								cs = checksum(test,cs);
+				    							}
+				    							printf("%c", test);
+				    							WriteLCD(test);
+				    							test = getchar();
+				    						};
+				    						printf("Checksum = 0x%x\n", cs);		/*Prints checksum result in Hexadecimal               */
+				    					};
+				    			};
+				    	};
+				 };
+		};
+	};
+
+	return 0;
+}
+
+char checksum(char test, char cs){
+  cs = (cs ^ test);
+  return(cs);
+}

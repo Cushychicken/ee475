@@ -1,0 +1,128 @@
+/*
+ * gpsparse.h
+ *
+ *  Created on: Oct 4, 2011
+ *      Author: nash.reilly
+ */
+
+#ifndef GPSPARSE_H_
+#define GPSPARSE_H_
+
+void checksum(char test, char cs);
+char check_upd(char test, char cs);
+int atoh(char test);
+
+void checksum(char test, char cs){
+  int j,k,temp,check;
+  char pkt[83];
+
+  j = 0;																		/*Sets checksum flag to 0                             */
+  k = 0;
+
+  if(test == 'G'){
+	  cs  		= test;
+	  pkt[j] 	= test;
+	  j++;
+	  test		= getchar();
+	  if(test == 'P'){
+		  cs = check_upd(test,cs);
+		  pkt[j] = test;
+		  j++;
+		  test = getchar();
+		  if(test == 'G'){
+			  cs = check_upd(test,cs);
+			  pkt[j] 	= test;
+			  j++;
+			  test 	= getchar();
+			  if(test == 'G'){
+				  cs   	= check_upd(test,cs);
+				  pkt[j] 	= test;
+				  j++;
+				  test 	= getchar();
+				  if(test == 'A'){							/*If it makes it this far, GPGGA has been found       */
+					  cs = check_upd(test,cs);			/*Checksum ready for data after GPGGA                 */
+					  pkt[j] 	= test;
+					  j++;
+					  test 	= getchar();
+					  while(test != '$'){						/*Loop reads in new character from serial, checks for */
+						  pkt[j] = test;
+						  j++;
+						  test = getchar();
+					  };
+
+					  for(j=0; (pkt[j]!= '*'); j++){
+						  if(j == 0){
+							  cs = pkt[j];
+						  } else {
+							  cs = check_upd(pkt[j], cs);
+						  }
+					  };
+
+					  printf("Checksum (rec'd)");
+					  temp  = (atoh(pkt[(j+1)]) + 16);
+					  check = (atoh(pkt[(j+2)]) + temp);
+					  printf("Checksum (rec'd, hex)= %c%c",pkt[(j+1)],pkt[(j+2)]);
+					  printf("Checksum (rec'd)     = %d\n", check);
+					  printf("Checksum (calc)      = %d\n", cs);
+
+					  if (cs == check) {
+						  for(j=0; (pkt[j]!= '\n'); j++){
+							  printf("%c", pkt[j]);
+						  };
+					  };
+
+				  };
+			  };
+		  };
+	  };
+  };
+
+};
+
+char check_upd(char test, char cs){
+  cs = (cs ^ test);
+  return(cs);
+};
+
+int atoh(char test){
+	int temp;
+	switch(test){
+	case '0':
+		temp = 0; break;
+	case '1':
+		temp = 1; break;
+	case '2':
+		temp = 2; break;
+	case '3':
+		temp = 3; break;
+	case '4':
+		temp = 4; break;
+	case '5':
+		temp = 5; break;
+	case '6':
+		temp = 6; break;
+	case '7':
+		temp = 7; break;
+	case '8':
+		temp = 8; break;
+	case '9':
+		temp = 9; break;
+	case 'A':
+		temp = 10; break;
+	case 'B':
+		temp = 11; break;
+	case 'C':
+		temp = 12; break;
+	case 'D':
+		temp = 13; break;
+	case 'E':
+		temp = 14; break;
+	case 'F':
+		temp = 15; break;
+	default:
+		temp = 0;
+	};
+	return(temp);
+};
+
+#endif /* GPSPARSE_H_ */

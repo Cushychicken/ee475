@@ -1,0 +1,45 @@
+/*
+ * lcd_write.c
+ *
+ *  Created on: Sep 23, 2011
+ *      Author: nash.reilly
+ */
+
+#include <stdio.h>
+#include <string.h>
+#include "C:\NRCREE475\lab04\DE2_System\nios_qsys\software\lcd\lcdwrite.h"
+
+#define Switches (volatile int *) 0x01001010
+#define LEDs 	 (int *) 0x01001000
+
+int main (void){
+
+	char str[] = "Switch program!\n";
+
+	while(1){
+		if(Switches == 1){
+			str = "SW1 is active.\n";
+			WriteLCD(str);
+		};
+
+		if(Switches == 2){
+			str = "SW2 is active.\n";
+			WriteLCD(str);
+		};
+
+		if(Switches == 4){
+			str = "SW3 is active.\n";
+			WriteLCD(str);
+		};
+
+		if(Switches == 8){
+			str = "SW4 is active.\n";
+			WriteLCD(str);
+		};
+	};
+
+	WriteLCD(str);
+
+	return(1);
+
+}

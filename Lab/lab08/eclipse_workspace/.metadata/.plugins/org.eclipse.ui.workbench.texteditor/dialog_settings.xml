@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="237" key="DIALOG_WIDTH"/>
+		<item value="263" key="DIALOG_Y_ORIGIN"/>
+		<item value="1068" key="DIALOG_X_ORIGIN"/>
+		<item value="362" key="DIALOG_HEIGHT"/>
+		<item value="1|Tahoma|8.25|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="true" key="wrap"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="incremental"/>
+		<item value="false" key="wholeword"/>
+		<item value="test" key="selection"/>
+		<list key="findhistory">
+			<item value="test"/>
+			<item value="altera_avalon_uart"/>
+			<item value="altera_avalon_uart*"/>
+			<item value="init_buttons"/>
+			<item value="initial_message"/>
+			<item value="lcd_open"/>
+			<item value="edge_capture"/>
+			<item value="LED_RED_PIO_BASE"/>
+		</list>
+		<list key="replacehistory">
+			<item value=""/>
+			<item value="PWM2_"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="415" key="DIALOG_Y_ORIGIN"/>
+		<item value="765" key="DIALOG_X_ORIGIN"/>
+	</section>
+</section>
