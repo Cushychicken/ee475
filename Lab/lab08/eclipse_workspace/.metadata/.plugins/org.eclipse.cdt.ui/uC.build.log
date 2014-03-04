@@ -1,8 +1,0 @@
-
-**** Build of configuration Nios II for project uC ****
-
-make all 
-Info: Building ../uC_bsp/
-make --no-print-directory -C ../uC_bsp/
-[BSP build complete]
-[uC build complete]

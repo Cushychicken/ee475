@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;lcd/write_lcd&apos; to &apos;write_lcd.c&apos;" description="Rename resource &apos;write_lcd&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="write_lcd" name="write_lcd.c" stamp="1316808771863" updateReferences="true"/>
-</session>

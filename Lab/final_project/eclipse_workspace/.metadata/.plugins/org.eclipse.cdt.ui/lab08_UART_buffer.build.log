@@ -1,8 +1,0 @@
-
-**** Build of configuration Nios II for project lab08_UART_buffer ****
-
-make all 
-Info: Building ../lab08_UART_buffer_bsp/
-make --no-print-directory -C ../lab08_UART_buffer_bsp/
-[BSP build complete]
-[lab08_UART_buffer build complete]

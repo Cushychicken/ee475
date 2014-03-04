@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;lab08_UART_buffer/hello_ucosii.c&apos;" deleteContents="false" description="Delete resource &apos;lab08_UART_buffer/hello_ucosii.c&apos;" element1="/lab08_UART_buffer/hello_ucosii.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1323210472914"/>&#x0A;<refactoring comment="Delete resource &apos;lab08_UART_buffer/gpsparse.h&apos;" deleteContents="false" description="Delete resource &apos;lab08_UART_buffer/gpsparse.h&apos;" element1="/lab08_UART_buffer/gpsparse.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1323292738569"/>
-</session>

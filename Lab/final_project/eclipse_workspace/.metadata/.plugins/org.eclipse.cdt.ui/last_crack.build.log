@@ -1,8 +1,0 @@
-
-**** Build of configuration Nios II for project last_crack ****
-
-make all 
-Info: Building ../last_crack_bsp/
-make --no-print-directory -C ../last_crack_bsp/
-[BSP build complete]
-[last_crack build complete]
